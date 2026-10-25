@@ -1,0 +1,117 @@
+# JSPSF-GENERIC-V1
+# Encoding: UTF-8
+# All Job, Operation and Machine identifiers are 1-based.
+
+[INSTANCE]
+InstanceName = la5_SF
+OriginalInstanceName = 013JSPPSF_la5_M
+SourceInstance = la05
+NbJobs = 10
+NbMachines = 5
+TotalOps = 50
+MaxOps = 5
+FFSource = new deterministic connected DAG
+Seed = 4085744768094240080
+DirectEdges = 40
+PossibleUpperEdges = 100
+DirectDensity = 0.400000
+
+[OPERATIONS]
+# Job Operation Machine ProcessingTime
+1 1 2 72
+1 2 1 87
+1 3 5 95
+1 4 3 66
+1 5 4 60
+2 1 5 5
+2 2 4 35
+2 3 1 48
+2 4 3 39
+2 5 2 54
+3 1 2 46
+3 2 4 20
+3 3 3 21
+3 4 1 97
+3 5 5 55
+4 1 1 59
+4 2 4 19
+4 3 5 46
+4 4 2 34
+4 5 3 37
+5 1 5 23
+5 2 3 73
+5 3 4 25
+5 4 2 24
+5 5 1 28
+6 1 4 28
+6 2 1 45
+6 3 5 5
+6 4 2 78
+6 5 3 83
+7 1 1 53
+7 2 4 71
+7 3 2 37
+7 4 5 29
+7 5 3 12
+8 1 5 12
+8 2 3 87
+8 3 4 33
+8 4 2 55
+8 5 1 38
+9 1 3 49
+9 2 4 83
+9 3 2 40
+9 4 1 48
+9 5 5 7
+10 1 3 65
+10 2 4 17
+10 3 1 90
+10 4 5 27
+10 5 2 23
+[END_OPERATIONS]
+
+[PRECEDENCE]
+# Job PredecessorOperation SuccessorOperation
+1 1 2
+1 1 4
+1 1 5
+1 2 3
+2 1 2
+2 1 3
+2 3 4
+2 3 5
+3 1 2
+3 2 3
+3 3 4
+3 4 5
+4 1 2
+4 1 3
+4 1 4
+4 3 5
+5 1 2
+5 1 3
+5 1 5
+5 2 4
+6 1 2
+6 1 3
+6 2 5
+6 3 4
+7 1 2
+7 2 3
+7 2 4
+7 2 5
+8 1 2
+8 1 3
+8 2 4
+8 4 5
+9 1 2
+9 1 3
+9 2 4
+9 2 5
+10 1 2
+10 2 3
+10 2 4
+10 3 5
+[END_PRECEDENCE]
+
+[END_INSTANCE]

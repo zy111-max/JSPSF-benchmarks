@@ -1,0 +1,8 @@
+# Preserve published dataset bytes for reproducible SHA-256 checks.
+* text=auto
+data/** -text
+*.mat binary
+metadata/*.csv text eol=lf
+metadata/*.json text eol=lf
+*.md text eol=lf
+*.py text eol=lf

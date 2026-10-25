@@ -1,0 +1,9 @@
+canonical_id,instance_name,jobs,machines,operations,canonical_path,input_fingerprint
+JSPSF-006,ft6_SF,6,6,36,data/canonical/JSPSF-006_ft6_SF.json,f93834ea8656794c9ac9ecfb488ca439814821398d37109539b85807073be0f5
+JSPSF-012,la4_SF,10,5,50,data/canonical/JSPSF-012_la4_SF.json,bc127fdc5269f1ce24ecc736b8595dcfc480197e07e5af3e6d134b8fbb528661
+JSPSF-017,la9_SF,15,5,75,data/canonical/JSPSF-017_la9_SF.json,4c1464f39b65d0e198824ccac1cde31c13276fbca9917e207dc4a6c62baf18bb
+JSPSF-001,abz5_SF,10,10,100,data/canonical/JSPSF-001_abz5_SF.json,facd5f32cd9006b45f95009fdb946d74155819cdacbcd95d9b4cdd71eac4a245
+JSPSF-002,abz6_SF,10,10,100,data/canonical/JSPSF-002_abz6_SF.json,209b50f09cf2b4bd3de4c50048a75d145eb3e77eb9efc2c6f0b455ae25ee57cc
+JSPSF-031,la23_SF,15,10,150,data/canonical/JSPSF-031_la23_SF.json,5d90bcffde6836842ae8180e12692899ba68e7a2bb5a8620f528a342f27554fb
+JSPSF-060,swv3_SF,20,10,200,data/canonical/JSPSF-060_swv3_SF.json,3c56022c1328555effdc066688eee3c4379b2a2bcb7277081225b60ce5586dd3
+JSPSF-097,ta20_SF,20,15,300,data/canonical/JSPSF-097_ta20_SF.json,4633154ac264e1b8c68417a38c2e4df778ecf9f7be62e22606e2b1f3ef565810

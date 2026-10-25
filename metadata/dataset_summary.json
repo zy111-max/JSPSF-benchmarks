@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "published_date": "2026-10-25",
+  "unique_scheduling_instances": 221,
+  "positive_duration_instances": 220,
+  "legacy_instances_with_zero_duration": 1,
+  "original_format_files": 443,
+  "original_formats": {
+    "expanded_opl": 161,
+    "expanded_txt": 161,
+    "legacy_opl": 61,
+    "legacy_mat": 60
+  },
+  "canonical_json": 221,
+  "direct_input_unique": 221,
+  "reachability_unique": 221,
+  "generated_ff_designs_in_expanded": 159,
+  "reused_ff_designs_in_expanded": 2,
+  "zero_duration_case": {
+    "source_file": "data/legacy/mat/MIN/18_or18_SF.mat",
+    "original_source_name": "18JSPPSF_or18_M.mat",
+    "job": 10,
+    "operation": 10,
+    "machine": 4,
+    "processing_time": 0
+  },
+  "source_preservation": "All mathematical input arrays and MAT bytes preserved. Public filenames and InstanceName labels use the SF suffix; original names are retained in manifests and OriginalInstanceName. DAT ResultFile metadata is made relative.",
+  "legacy_provenance": "Maintainer identifies the legacy collection as originating from Zhou et al. (2026), DOI 10.1016/j.cor.2026.107439. The local filenames have not been authenticated against an official supplementary archive."
+}

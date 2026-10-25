@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "manifest_rows": 664,
+  "verified_file_hashes": 664,
+  "expected_canonical_instances": 221,
+  "canonical_json_files": 221,
+  "valid_canonical_instances": 221,
+  "unique_input_ff_fingerprints": 221,
+  "unique_closure_fingerprints": 221,
+  "input_ff_duplicates": {},
+  "closure_duplicates": {},
+  "zero_duration_operations": [
+    {
+      "repo_path": "data/canonical/JSPSF-221_18_or18_SF.json",
+      "job": 10,
+      "operation": 10,
+      "machine": 4,
+      "allowed_or18": true
+    }
+  ],
+  "warnings": [
+    "data/canonical/JSPSF-221_18_or18_SF.json: preserved source or18 zero duration at job 10, operation 10, machine 4"
+  ],
+  "errors": []
+}
