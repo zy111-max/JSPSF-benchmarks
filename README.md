@@ -1,32 +1,59 @@
 # JSPSF-benchmarks
 
-**顺序柔性作业车间调度（JSPSF）算例库。** 收录现有扩展算例和文献旧算例，共 **221 个不同的调度输入**，同时保存 **443 个原格式数据文件**，另提供去重后的 221 份统一 JSON，便于 Python、MATLAB、C++ 等读取。
+**顺序柔性作业车间调度（JSPSF）算例库。** 收录我们创建的算例和论文已有的算例，共 **221 个不同的调度输入**，同时保存 **443 个原格式数据文件**，另提供去重后的 221 份统一 JSON，便于 Python、MATLAB、C++ 等读取。
 
-所有公开算例名称统一使用 **`_SF` 后缀**：扩展实例如 `ft6_SF.dat`、`ft6_SF.txt`，旧实例保留原编号，如 `01_la10_SF.dat`、`01_la10_SF.mat`。JSON 的 `InstanceName` 同样使用 SF 名称；`OriginalInstanceName` 和各清单的 `source_name` 保留原名称，数值输入不变。
+所有公开算例名称统一使用 **`_SF` 后缀**：我们创建的算例如 `ft6_SF.dat`、`ft6_SF.txt`，论文已有的算例保留原编号，如 `01_la10_SF.dat`、`01_la10_SF.mat`。JSON 的 `InstanceName` 同样使用 SF 名称；`OriginalInstanceName` 和各清单的 `source_name` 保留原名称，数值输入不变。
 
 **仓库地址：<https://github.com/zy111-max/JSPSF-benchmarks>**  
 **固定版本：<https://github.com/zy111-max/JSPSF-benchmarks/tree/v1.0.0>**
+
+**v2.0.0：** [`v2/`](v2/README.md) 只改造我们创建的 JSPSF-001～161，重新设计顺序柔性，共 290 个算例（标准系列 161 个、复杂系列 129 个），并标注了与 v1 的不同之处。论文已有的算例和 v1.0.0 的全部数据文件没有改动。
+**2.0 固定版本：<https://github.com/zy111-max/JSPSF-benchmarks/tree/v2.0.0>**
+
+## 算例来源
+
+| 类别 | 编号 | 算例数 | 目录 | 说明 |
+|---|---|---:|---|---|
+| **我们创建的算例** | JSPSF-001～161 | 161 | `data/expanded/` | 以 JSPLIB 经典算例为基础增加顺序柔性，159 例的 FF 为新生成，2 例复用已有 FF |
+| **论文已有的算例** | JSPSF-162～221 | 60 | `data/legacy/` | 来源见下文，保持原样；其中 `18_or18_SF` 含 0 加工时间，加工时间全为正的有 59 个 |
+| **专利使用的算例** | 我们创建的算例中的 8 个 | 8 | `data/expanded/` | 不是新的一组数据，见下文列表 |
+| **v2 重新设计的算例** | JSPSF2-S001～S161、JSPSF2-C001～C129 | 290 | `v2/` | 由我们创建的 161 个算例改造而来，论文已有的算例不参与 |
 
 ## 下载与内容
 
 - [下载 v1.0.0 全部文件 ZIP](https://github.com/zy111-max/JSPSF-benchmarks/archive/refs/tags/v1.0.0.zip)
 - [221 个不同算例的索引](metadata/instances.csv)
 - [全部数据文件及校验值](metadata/files.csv)
-- [本次使用的 8 个不同规模算例](metadata/example_8_instance_subset.csv)
+- [专利使用的 8 个不同规模算例](metadata/example_8_instance_subset.csv)
 
 | 路径 | 内容 | 文件数 |
 |---|---|---:|
-| `data/expanded/dat/` | 扩展算例，OPL DAT 格式 | 161 |
-| `data/expanded/txt/` | 同一批扩展算例，通用 TXT 格式 | 161 |
-| `data/legacy/opl/` | 现有旧版 OPL 数据 | 61 |
-| `data/legacy/mat/MIN/` | 旧版 MATLAB 数据，保留原组名 | 20 |
-| `data/legacy/mat/MID/` | 旧版 MATLAB 数据，保留原组名 | 20 |
-| `data/legacy/mat/MAX/` | 旧版 MATLAB 数据，保留原组名 | 20 |
+| `data/expanded/dat/` | 我们创建的算例，OPL DAT 格式 | 161 |
+| `data/expanded/txt/` | 我们创建的算例，通用 TXT 格式 | 161 |
+| `data/legacy/opl/` | 论文已有算例的旧版 OPL 数据 | 61 |
+| `data/legacy/mat/MIN/` | 论文已有算例的 MATLAB 数据，保留原组名 | 20 |
+| `data/legacy/mat/MID/` | 论文已有算例的 MATLAB 数据，保留原组名 | 20 |
+| `data/legacy/mat/MAX/` | 论文已有算例的 MATLAB 数据，保留原组名 | 20 |
 | `data/canonical/` | 按调度输入去重、去除填充后的统一 JSON | 221 |
 
-**文件数不等于不同算例数。** DAT/TXT 是同一扩展集的不同格式；旧版 OPL 中，59 例与旧 MAT 数据相同，另 2 例（`yn1`、`la29`）与扩展集相同。因此整体包含 161 个扩展算例与 60 个旧 MAT 调度输入，共 221 例。两个文件同名并不保证加工时间、机器和工艺关系相同，应使用索引和输入指纹进行对应。
+**文件数不等于不同算例数。** DAT/TXT 是我们创建的算例的不同格式；旧版 OPL 中，59 例与论文已有算例的 MAT 数据相同，另 2 例（`yn1`、`la29`）与我们创建的算例相同。因此整体包含 161 个我们创建的算例与 60 个论文已有算例的调度输入，共 221 例。两个文件同名并不保证加工时间、机器和工艺关系相同，应使用索引和输入指纹进行对应。
 
 去重同时检查了原始输入矩阵和传递闭包，两种方式均得到 221 个不同输入。MAT 原文件中的 `Power` 等附加数值变量完整保留；统一 JSON 只提取调度输入，不包含能耗模型的全部参数。
+
+## 专利使用的算例
+
+专利使用以下 8 个不同规模的算例，全部属于**我们创建的算例**，数据是 v1.0.0 的原文件。v2 中的 `ft6_SF2` 等同基础算例重新设计过顺序柔性，是不同的算例，不能与这 8 个算例混用。
+
+| 算例 | 编号 | 工件×机器 | 工序数 |
+|---|---|---|---:|
+| `ft6_SF` | JSPSF-006 | 6×6 | 36 |
+| `la4_SF` | JSPSF-012 | 10×5 | 50 |
+| `la9_SF` | JSPSF-017 | 15×5 | 75 |
+| `abz5_SF` | JSPSF-001 | 10×10 | 100 |
+| `abz6_SF` | JSPSF-002 | 10×10 | 100 |
+| `la23_SF` | JSPSF-031 | 15×10 | 150 |
+| `swv3_SF` | JSPSF-060 | 20×10 | 200 |
+| `ta20_SF` | JSPSF-097 | 20×15 | 300 |
 
 ## 问题含义
 
@@ -54,7 +81,7 @@
 | `SourceFiles` | 与此输入对应的仓库内文件 |
 | `PositiveProcessingTimes` | 所有加工时间是否严格为正 |
 
-JSON 按每个工件真实工序数保存，不包含 OPL 的补零区域。旧算例中工序数不一定等于机器数。
+JSON 按每个工件真实工序数保存，不包含 OPL 的补零区域。论文已有的算例中工序数不一定等于机器数。
 
 ### OPL DAT
 
@@ -68,21 +95,21 @@ JSON 按每个工件真实工序数保存，不包含 OPL 的补零区域。旧�
 
 ## 来源与引用
 
-### 旧算例
+### 论文已有的算例（JSPSF-162～221）
 
-根据维护者提供的来源说明，旧算例来自：
+根据维护者提供的来源说明，这批算例来自：
 
 > Yang Zhou, Guiliang Gong, Xiahui Liu, Zhipeng Yuan, Jinbo Hu, Ao He, Jie Li. **A dual-population memetic algorithm for job shop scheduling problem considering sorting flexibility.** *Computers & Operations Research*, 191 (2026), 107439. DOI: [10.1016/j.cor.2026.107439](https://doi.org/10.1016/j.cor.2026.107439).
 
 出版社页面介绍了 60 个算例。这里保留现有本地数据的分组和数值，在清单中保留原名称，并给出文件身份校验；尚未将其逐一与出版社官方附属数据包核对，故不把本库称为原作者官方发布仓库。61 个旧 OPL 文件也不能简单当作论文中 60 个算例的一一编号对应。
 
-### 扩展算例
+### 我们创建的算例（JSPSF-001～161）
 
-161 个扩展实例的基础加工时间和机器数据取自 [tamy0612/JSPLIB](https://github.com/tamy0612/JSPLIB)，覆盖 ABZ、FT、LA、ORB、SWV、TA、YN 七类。原始家族文献见 [JSPLIB 的参考文献](https://github.com/tamy0612/JSPLIB#references)。
+这 161 个算例的基础加工时间和机器数据取自 [tamy0612/JSPLIB](https://github.com/tamy0612/JSPLIB)，覆盖 ABZ、FT、LA、ORB、SWV、TA、YN 七类。原始家族文献见 [JSPLIB 的参考文献](https://github.com/tamy0612/JSPLIB#references)。
 
 转换清单标明 **159 例生成了 FF，2 例复用了已有 FF**；复用项为 `la29_SF` 和 `yn1_SF`。新生成部分采用确定性种子和连接有向无环图，生成参数与逐例种子见 `metadata/conversion_manifest.csv`。现有清单不证明全部 161 个 FF 均为新增设计。
 
-现有扩展集没有 `orb07`：其原 JSP 输入含零加工时长，而原转换程序要求正加工时间。本次上传未重新生成或补改该实例。
+这批算例没有 `orb07`：其原 JSP 输入含零加工时长，而原转换程序要求正加工时间。本次上传未重新生成或补改该实例。
 
 引用本库时，请同时引用所使用数据对应的原论文或原始 JSP 家族，建议注明版本 `v1.0.0` 和具体文件名/输入指纹。来源和许可范围见 [NOTICE.md](NOTICE.md)；本次发布没有为第三方数据擅自指定统一开源许可证。
 
@@ -111,3 +138,7 @@ This repository contains **221 distinct JSPSF scheduling inputs**, preserved in 
 The maintainer identifies the legacy collection as originating from Zhou et al. (2026), DOI [10.1016/j.cor.2026.107439](https://doi.org/10.1016/j.cor.2026.107439). The expanded collection derives base JSP data from [JSPLIB](https://github.com/tamy0612/JSPLIB), with 159 generated precedence designs and two reused designs. Local legacy files have not been authenticated against an official supplementary archive. Source attribution is not a new license grant.
 
 Processing times, fixed machine assignments, and stored precedence relations are preserved. Public filenames and `InstanceName` labels use the `_SF` suffix, such as `ft6_SF`; legacy file identifiers retain their original numeric prefixes. Original names remain in `OriginalInstanceName` and the manifests. Machine-local `ResultFile` paths are made relative in published DAT copies. Original MAT bytes are unchanged. One original legacy instance (`18_or18_SF`) contains a zero processing time and is explicitly flagged. No complete process chain is fixed by this release. See the manifests for file identities, aliases, and instance-level data provenance.
+
+**Sources.** The expanded collection (JSPSF-001 to JSPSF-161) holds the instances we created; the legacy collection (JSPSF-162 to JSPSF-221) holds the existing instances from the literature. Eight of our instances, listed in `metadata/example_8_instance_subset.csv`, are the ones used in the patent, in their v1.0.0 form.
+
+**Version 2.0.0** adds [`v2/`](v2/README.md): 290 instances with redesigned sequence flexibility on the processing times, machines and reference order of JSPSF-001 to JSPSF-161 (161 standard, 129 complex). The legacy collection and all v1.0.0 data files stay unchanged.

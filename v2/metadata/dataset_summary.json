@@ -1,0 +1,13 @@
+{
+  "version": "2.0.0",
+  "base": "JSPSF-001..161 of v1.0.0",
+  "instances": 290,
+  "standard": 161,
+  "complex": 129,
+  "data_files": 870,
+  "formats": {
+    "json": 290,
+    "dat": 290,
+    "txt": 290
+  }
+}

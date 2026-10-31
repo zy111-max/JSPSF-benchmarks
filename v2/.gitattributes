@@ -1,0 +1,2 @@
+# Preserve published dataset bytes for reproducible SHA-256 checks.
+data/** -text
