@@ -12,10 +12,12 @@
 
 ## 参考上下界
 
+本库以**约束规划（CP）模型作为主要求解方法**，目标为最小化最大完成时间 Cmax。
+
 - [v1.0.0 参考表](metadata/upper_bounds.csv)：148 个有效结果，其中 138 例已证明最优。
 - [v2.0.0 参考表](v2/metadata/upper_bounds.csv)：290 例，其中 279 例已证明最优。
 
-两表均采用 `canonical_id、instance_name、lower_bound、upper_bound、proved_optimal、method` 六列。`proved_optimal=yes` 表示该数值已证明最优，此时上下界相等；`no` 表示仅有参考界值，不将上界称为最优值。
+两表均采用 `canonical_id、instance_name、lower_bound、upper_bound、proved_optimal、method` 六列。CP 求解器在精确最优性判定下返回 `OPT/OPTIMAL` 或等价的最优性证明状态，且模型符合算例定义时，该结果即为该算例已证明的最优值。表中以 `proved_optimal=yes` 标记，此时上下界相等；`no` 表示仅有参考界值，不将上界称为最优值。
 
 **来源与范围：** 上界均来自已独立校验的 CP 可行调度。v1 使用维护者 2026-07-29 批次的历史 OptalCP 记录，覆盖自建 161 例中的 148 个有效结果；其余 13 例及文献已有的 60 例不编填数值。v2 的已证最优行取 CP 最优值；其余 11 行的下界采用工件负载与 Jackson 有效解析界，`method` 明确区分其来源。
 
