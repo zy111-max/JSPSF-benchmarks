@@ -10,6 +10,17 @@
 **v2.0.0：** [`v2/`](v2/README.md) 只改造我们创建的 JSPSF-001～161，重新设计顺序柔性，共 290 个算例（标准系列 161 个、复杂系列 129 个），并标注了与 v1 的不同之处。论文已有的算例和 v1.0.0 的全部数据文件没有改动。
 **2.0 固定版本：<https://github.com/zy111-max/JSPSF-benchmarks/tree/v2.0.0>**
 
+## 参考上下界
+
+- [v1.0.0 参考表](metadata/upper_bounds.csv)：148 个有效结果，其中 138 例已证明最优。
+- [v2.0.0 参考表](v2/metadata/upper_bounds.csv)：290 例，其中 279 例已证明最优。
+
+两表均采用 `canonical_id、instance_name、lower_bound、upper_bound、proved_optimal、method` 六列。`proved_optimal=yes` 表示该数值已证明最优，此时上下界相等；`no` 表示仅有参考界值，不将上界称为最优值。
+
+**来源与范围：** 上界均来自已独立校验的 CP 可行调度。v1 使用维护者 2026-07-29 批次的历史 OptalCP 记录，覆盖自建 161 例中的 148 个有效结果；其余 13 例及文献已有的 60 例不编填数值。v2 的已证最优行取 CP 最优值；其余 11 行的下界采用工件负载与 Jackson 有效解析界，`method` 明确区分其来源。
+
+**求解环境：** v2 使用 OptalCP 2026.4.0 Academic、Python 3.14.4、Windows 11、Intel Core Ultra 9 285H、16 个逻辑处理器、可见内存 31.68 GiB；每例 2 个求解线程，最多 8 例并发，Auto 搜索、种子 0。先每例 300 秒，对未完成证明的 18 例再以每例 3600 秒重跑，逐例保留较好的解。v1 历史记录未完整保存版本、硬件及随机种子；可用旧脚本的默认设置为 1800 秒、16 线程，实际调用参数未完整保存，因此不据此补写未记录的环境。
+
 ## 算例来源
 
 | 类别 | 编号 | 算例数 | 目录 | 说明 |
@@ -117,17 +128,11 @@ JSON 按每个工件真实工序数保存，不包含 OPL 的补零区域。论�
 
 旧 MAT 文件 `MIN/18_or18_SF.mat`（原名 `18JSPPSF_or18_M.mat`）的 **工件 10、工序 10、机器 4 加工时间为 0**。本库原样保留并在 JSON/索引中标注。故 221 例中有 220 例加工时间均为正，1 例含零时长；若模型假设加工时间严格为正，应明确处理该例，不能静默改值。
 
-## Python 读取与校验
+## 读取与文件核验
 
-以下工具只使用 Python 标准库，不需要 MATLAB、CPLEX 或联网安装包：
+统一 JSON 可使用各语言的标准 JSON 库读取，DAT 与 TXT 字段定义见上文。数组下标与机器、工件、工序的编号方式应按数据格式说明处理。
 
-```bash
-python tools/example_read.py data/canonical/JSPSF-006_ft6_SF.json
-python tools/example_read.py data/expanded/dat/ft6_SF.dat
-python tools/validate_dataset.py
-```
-
-校验覆盖全部数据文件哈希，以及统一实例的维度、加工时间、指定机器、工艺图无环性和重复输入；零时长旧例作为已记录的警告保留。
+[`metadata/files.csv`](metadata/files.csv) 列出文件路径、SHA-256 和调度输入指纹，可据此核对下载文件；[`metadata/instances.csv`](metadata/instances.csv) 给出算例对应关系与规模。
 
 ---
 

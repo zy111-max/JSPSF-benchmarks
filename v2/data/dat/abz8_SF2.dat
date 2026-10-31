@@ -1,5 +1,5 @@
 // JSPSF v2.0.0, series S: P and M from JSPSF-004 (abz8_SF), JSPLIB source abz8.
-// FF source: staged sequence-flexibility design, tools/generate_v2.py.
+// FF source: staged sequence-flexibility design; parameters are listed in v2/metadata/generation_manifest.csv.
 // FF seed = 9940603326371186278; target unordered share 0.35.
 
 InstanceName = "abz8_SF2";

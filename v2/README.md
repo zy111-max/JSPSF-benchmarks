@@ -50,9 +50,15 @@
 
 上述规则按规模和形状设置目标无序比，各系列使用固定的生成参数和种子。
 
-每个工件先在目标附近抽取自己的无序比，再随机切分工序段，从 256 个候选中取最接近目标的方案，所以柔性工序的位置在各工件之间是随机的。实现见 [`tools/generate_v2.py`](tools/generate_v2.py) 和 [`tools/rule_v2.py`](tools/rule_v2.py)，每例的种子和参数见 [`metadata/generation_manifest.csv`](metadata/generation_manifest.csv)。
+每个工件先在目标附近抽取自己的无序比，再随机切分工序段，从 256 个候选中取最接近目标的方案，所以柔性工序的位置在各工件之间是随机的。每例的种子和参数见 [`metadata/generation_manifest.csv`](metadata/generation_manifest.csv)。
 
 C 系列不包含 ft6，以及 ft20、la1～15、la26～35、swv16～20。系列成员与 v2.0.0 发布时一致。
+
+## 参考上下界
+
+[参考表](metadata/upper_bounds.csv)采用六列：`canonical_id、instance_name、lower_bound、upper_bound、proved_optimal、method`。290 例中有 279 例已证明最优，其上下界均等于最优值。其余 11 例仅提供参考界值，来源在 `method` 中注明。
+
+求解环境及数值定义见[根目录说明](../README.md#参考上下界)。
 
 ## 目录
 
@@ -65,25 +71,15 @@ C 系列不包含 ft6，以及 ft20、la1～15、la26～35、swv16～20。系列
 | `metadata/changes_from_v1.csv` | 每个算例与 v1 的对比 | |
 | `metadata/generation_manifest.csv` | 生成参数和种子 | |
 | `metadata/files.csv` | 全部数据文件的 SHA-256 | |
-| `tools/` | 算例生成及数据校验工具 | |
+| `metadata/upper_bounds.csv` | 六列参考上下界及最优性标记 | |
 
-格式与 v1 相同，读取工具通用。JSON 增加版本、系列、基础算例对应关系、柔性指标、生成设计和规模分档等元数据，`schema` 为 `JSPSF-JSON-V2`。加工时间、机器分配和工艺关系按发布数据保存。
+核心数据字段与 v1 一致。JSON 增加版本、系列、基础算例对应关系、柔性指标、生成设计和规模分档等元数据，`schema` 为 `JSPSF-JSON-V2`。加工时间、机器分配和工艺关系按发布数据保存。
 
-## 校验与复现
+## 读取与文件核验
 
-以下命令都在仓库根目录运行，只需要 Python 3.10+ 标准库：
+JSON 按各工件真实工序数保存，DAT 与 TXT 的字段定义见[根目录说明](../README.md)。本分支的 SHA-256 见 [`metadata/files.csv`](metadata/files.csv)，调度输入指纹见算例索引。
 
-```bash
-python tools/validate_dataset.py v2 --expected-instances 290
-python v2/tools/validate_v2.py
-python tools/example_read.py v2/data/canonical/JSPSF2-S006_ft6_SF2.json
-```
-
-重新生成算例数据（结果逐字节相同）：
-
-```bash
-python v2/tools/build_v2.py --v1-root . --out v2
-```
+参考值集中放在独立表中，算例 JSON 和索引不再重复保存参考界值。当前分支的附加元数据和固定版本快照可能不同，加工时间、机器分配和 FF 关系保持一致。请使用与下载分支对应的文件清单核验。
 
 ## 来源与引用
 
@@ -93,6 +89,6 @@ python v2/tools/build_v2.py --v1-root . --out v2
 
 ## English summary
 
-Version 2.0.0 holds **290 instances with redesigned sequence flexibility**: 161 standard instances (`JSPSF2-S001` to `S161`, numbered as in v1) and 129 complex instances (`JSPSF2-C001` to `C129`). Processing times, machines and the reference operation order of JSPSF-001 to JSPSF-161 are unchanged; only `FF` is regenerated, as staged designs whose unordered share depends on instance size and on the jobs-to-machines ratio. All v1.0.0 files stay as they were.
+Version 2.0.0 holds **290 instances with redesigned sequence flexibility**: 161 standard instances (`JSPSF2-S001` to `S161`, numbered as in v1) and 129 complex instances (`JSPSF2-C001` to `C129`). Processing times, machines and the reference operation order of JSPSF-001 to JSPSF-161 are unchanged; only `FF` is regenerated, as staged designs whose unordered share depends on instance size and on the jobs-to-machines ratio. All v1.0.0 scheduling inputs remain unchanged.
 
 The search space of job sequences grows from 10^115 on average to 10^154 (S) and 10^177 (C). Search-space size alone does not establish computational difficulty.

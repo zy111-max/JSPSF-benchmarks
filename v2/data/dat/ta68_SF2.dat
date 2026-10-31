@@ -1,5 +1,5 @@
 // JSPSF v2.0.0, series S: P and M from JSPSF-145 (ta68_SF), JSPLIB source ta68.
-// FF source: staged sequence-flexibility design, tools/generate_v2.py.
+// FF source: staged sequence-flexibility design; parameters are listed in v2/metadata/generation_manifest.csv.
 // FF seed = 15911899719113026668; target unordered share 0.2.
 
 InstanceName = "ta68_SF2";
